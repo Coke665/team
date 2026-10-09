@@ -112,8 +112,12 @@ region_mean_plastic
 
 ```{r Ex3, message = FALSE}
 # Write your code here to answer exercise 3
-
-
+plastic_data_all <- plastic_data_all %>%
+  mutate(pct_mismanaged_plastic_ocean = mismanaged_plastic_ocean/mismanaged_plastic*100,na.rm = TRUE)
+region_med_plastic <- plastic_data_all %>%
+  group_by(region) %>%
+summarise(med_pct_mismanaged_plastic_ocean = median(pct_mismanaged_plastic_ocean,na.rm = TRUE))
+ region_med_plastic
 
 ```
 
@@ -122,7 +126,7 @@ region_mean_plastic
 
 ```{r Ex4, message = FALSE}
 # Write your code here to answer exercise 4
-
-
+plastic_data_all <- plastic_data_all %>%
+rename(pop = population)
 
 ```
